@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row } from 'react-flexbox-grid';
+import Grid from '@material-ui/core/Grid';
 import { generateLayout } from './filter';
 import { DynamicComponent } from '../components/DynamicComponent';
 import mui from '../config/mui';
@@ -108,10 +108,11 @@ class SelectFieldCreateDialog extends React.Component {
           <div>
             {
               layout.wrows.map((row, i) => (
-                <Row key={i}>
+                <Grid key={i} container direction="row">
                   {
                     row.map((field, index) => (
-                      <Col xs={field.layout.xs ? field.layout.xs.col : 6}
+                      <Grid item
+                        xs={field.layout.xs ? field.layout.xs.col : 6}
                         sm={field.layout.sm ? field.layout.sm.col : 6}
                         md={field.layout.md ? field.layout.md.col : 6}
                         lg={field.layout.lg ? field.layout.lg.col : 6}
@@ -167,10 +168,10 @@ class SelectFieldCreateDialog extends React.Component {
                           onNewRequest={props.onNewRequest}
                           filter={props.filter}
                         />
-                      </Col>
+                      </Grid>
                     ))
                   }
-                </Row>
+                </Grid>
               ))
             }
           </div>
